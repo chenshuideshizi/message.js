@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 50px">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vConsole/3.3.2/vconsole.min.js"></script>
+    <script src="../dist/loginLayer.umd.js"></script>
+    <style>
+        .app {
+            height: 200vh;
+            overflow: hidden;
+            background: linear-gradient(#333, #000);
+        }
+        .green {
+            background: green;
+            color: #fff;
+        }
+        .btn {
+            width: 4rem;
+            height: 1rem;
+        }
+    </style>
+</head>
+<body>  
+    <div class="app">
+        <h3>MessageBox</h3>
+        <div>
+            <button type="button" class="btn" onclick="showLoginMsg()">show Login Msg</button>
+            <button type="button" class="btn" onclick="showLimitMsg()">show Limit Msg</button>
+            <button type="button" class="btn" onclick="showMsg()">show Msg</button>
+            <button type="button" class="btn" onclick="showDefaultMsg()">show Default Msg</button>
+        </div>
+        <h3>Loading</h3>
+        <div>
+            <button type="button" class="btn" onclick="showLoading(true)">show Loading</button>
+        </div>
+
+        <h3>Toast</h3>
+        <div>
+
+            <button type="button" class="btn" onclick="showToast('hello toast')">显示Toast</button>
+        </div>
+    </div>
+    <script>
+        function showLoginMsg () {
+            tiger_api.loginMessageBox()
+            .then((index) => {
+                console.log('login', index)
+            })
+        }
+
+        function showLimitMsg () {
+            tiger_api.limitMessageBox('hello limit box')
+                .then((index) => {
+                    console.log('limit', index)
+                })
+        }
+
+
+
+        function showMsg () {
+            tiger_api.messageBox({message: 'hello world', btns: [{label: '确定', className: 'green'}]})
+                .then((index) => {
+                    console.log(index)
+                })
+        }
+
+        function showDefaultMsg () {
+            tiger_api.messageBox('default Msg')
+        }
+
+        function showLoading () {
+            tiger_api.loading(true)
+
+            setTimeout(() => {
+                tiger_api.loading(false)
+            }, 3000)
+        }
+
+        // 显示 toast
+        function showToast (message) {
+            tiger_api.toast(message)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "login-layer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:cjs": "rollup --config --output.file ./dist/loginLayer.cjs.js -f cjs",
+    "build:amd": "rollup --config --output.file ./dist/loginLayer.amd.js -f amd",
+    "build:es": "rollup -c -o ./dist/loginLayer.es.js -f es",
+    "build:umd": "rollup -c -o ./dist/loginLayer.umd.js -f umd -n tiger_api",
+    "build": "npm run  build:cjs && npm run build:amd && npm run build:es && npm run build:umd",
+    "dev": "rollup -c -o ./dist/loginLayer.umd.js -f umd -n tiger_api -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  }
+}
